@@ -81,7 +81,7 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold">Contact</h4>
             <div className="space-y-2 text-gray-300">
-              <p>Nashik, Maharashtra, India</p>
+              <p>Mumbai, Maharashtra, India</p>
               <a 
                 href="tel:+918421663088"
                 className="block hover:text-portfolio-orange transition-colors"
@@ -103,7 +103,7 @@ const Footer = () => {
           <p className="text-gray-300 flex items-center justify-center space-x-1">
             <span>© {currentYear} Ayush Vijay Chavan. Made with</span>
             <Heart className="w-4 h-4 text-portfolio-orange fill-current" />
-            <span>and lots of coffee ☕</span>
+            <span>and lots of Love</span>
           </p>
         </div>
       </div>

@@ -22,7 +22,7 @@ const About = () => {
             </h3>
             <p className="text-portfolio-gray-600 leading-relaxed">
               I'm a motivated Frontend Developer and UI Designer currently pursuing my B.Tech in CSE (AI & ML) 
-              at Sandip University, Nashik. My journey started from basic education in my village, and I've 
+              at Sandip University, Mumbai. My journey started from basic education in my village, and I've 
               grown into someone passionate about crafting responsive, intuitive, and aesthetically pleasing 
               user interfaces.
             </p>
@@ -48,7 +48,7 @@ const About = () => {
                 <div>
                   <h4 className="font-semibold text-portfolio-gray-900 mb-1">Education</h4>
                   <p className="text-portfolio-gray-600">B.Tech CSE (AI & ML)</p>
-                  <p className="text-sm text-portfolio-gray-500">Sandip University, Nashik</p>
+                  <p className="text-sm text-portfolio-gray-500">Sandip University, Mumbai</p>
                 </div>
               </div>
             </Card>
@@ -60,7 +60,7 @@ const About = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-portfolio-gray-900 mb-1">Location</h4>
-                  <p className="text-portfolio-gray-600">Nashik, Maharashtra, India</p>
+                  <p className="text-portfolio-gray-600">Mumbai, Maharashtra, India</p>
                   <p className="text-sm text-portfolio-gray-500">Available for remote work</p>
                 </div>
               </div>

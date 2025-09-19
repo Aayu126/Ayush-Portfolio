@@ -61,7 +61,7 @@ const Contact = () => {
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Location",
-      info: "Nashik, Maharashtra, India",
+      info: "Mumbai, Maharashtra, India",
       link: "#",
       color: "text-portfolio-purple",
       bgColor: "bg-portfolio-purple/10"
