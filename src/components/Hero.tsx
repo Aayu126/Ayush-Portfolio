@@ -22,7 +22,7 @@ const Hero = () => {
           <div className="mb-8 relative inline-block">
             <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-white shadow-xl mx-auto">
               <img 
-                src={ayushProfile} 
+                src="https://i.postimg.cc/BtWc2WC8/Ayush-image-portfolio.jpg" 
                 alt="Ayush Vijay Chavan - Frontend Developer"
                 className="w-full h-full object-cover"
               />
