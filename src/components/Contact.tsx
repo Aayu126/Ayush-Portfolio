@@ -36,7 +36,7 @@ const Contact = () => {
           subject: formData.subject,
           message: formData.message,
         },
-        "0KRDSk52U2FQW56QX" // Public Key
+        "N0hG87ChMdd4_D1ol" // Public Key
       );
 
       toast({
