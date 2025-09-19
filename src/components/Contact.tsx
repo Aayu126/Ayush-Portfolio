@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, Linkedin, Github, MapPin, Send } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -22,23 +23,38 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Create mailto link with form data
-    const mailtoLink = `mailto:ayushchavan1980@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    )}`;
-    
-    window.location.href = mailtoLink;
-    
-    toast({
-      title: "Message Prepared!",
-      description: "Your email client should open with the message ready to send.",
-    });
-    
-    // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
+
+    try {
+      await emailjs.send(
+        "service_6xnulet", // Service ID
+        "template_mvp308s", // Template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        "0KRDSk52U2FQW56QX" // Public Key
+      );
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+
+      // Reset form
+      setFormData({ name: '', email: '', subject: '', message: '' });
+
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      toast({
+        title: "Error",
+        description: "Something went wrong while sending your message.",
+        variant: "destructive",
+      });
+    }
   };
 
   const contactInfo = [
@@ -96,37 +112,27 @@ const Contact = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
+          {/* Contact Info */}
           <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-portfolio-gray-900 mb-6">
-                Let's Connect
-              </h3>
-              <p className="text-portfolio-gray-600 mb-8 leading-relaxed">
-                I'm always excited to discuss new projects, creative ideas, or opportunities to 
-                be part of your vision. Whether you have a project in mind or just want to chat 
-                about frontend development and design, I'd love to hear from you!
-              </p>
-            </div>
+            <h3 className="text-2xl font-bold text-portfolio-gray-900 mb-6">
+              Let's Connect
+            </h3>
+            <p className="text-portfolio-gray-600 mb-8 leading-relaxed">
+              I'm always excited to discuss new projects, creative ideas, or opportunities to 
+              be part of your vision. Whether you have a project in mind or just want to chat 
+              about frontend development and design, I'd love to hear from you!
+            </p>
 
-            {/* Contact Cards */}
             <div className="space-y-4">
               {contactInfo.map((contact, index) => (
                 <Card key={index} className="card-portfolio">
                   <div className="flex items-center space-x-4">
                     <div className={`p-3 rounded-lg ${contact.bgColor}`}>
-                      <div className={contact.color}>
-                        {contact.icon}
-                      </div>
+                      <div className={contact.color}>{contact.icon}</div>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-portfolio-gray-900">
-                        {contact.title}
-                      </h4>
-                      <a 
-                        href={contact.link}
-                        className="text-portfolio-gray-600 hover:text-portfolio-orange transition-colors"
-                      >
+                      <h4 className="font-semibold text-portfolio-gray-900">{contact.title}</h4>
+                      <a href={contact.link} className="text-portfolio-gray-600 hover:text-portfolio-orange transition-colors">
                         {contact.info}
                       </a>
                     </div>
@@ -135,7 +141,6 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Social Links */}
             <div>
               <h4 className="font-semibold text-portfolio-gray-900 mb-4">Follow Me</h4>
               <div className="flex space-x-4">
@@ -156,76 +161,34 @@ const Contact = () => {
 
           {/* Contact Form */}
           <Card className="card-portfolio">
-            <h3 className="text-xl font-bold text-portfolio-gray-900 mb-6">
-              Send Me a Message
-            </h3>
-            
+            <h3 className="text-xl font-bold text-portfolio-gray-900 mb-6">Send Me a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-portfolio-gray-700 mb-2">
                     Your Name
                   </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="John Doe"
-                    className="w-full"
-                  />
+                  <Input id="name" name="name" type="text" required value={formData.name} onChange={handleInputChange} placeholder="John Doe" />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-portfolio-gray-700 mb-2">
                     Email Address
                   </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="john@example.com"
-                    className="w-full"
-                  />
+                  <Input id="email" name="email" type="email" required value={formData.email} onChange={handleInputChange} placeholder="john@example.com" />
                 </div>
               </div>
-
               <div>
                 <label htmlFor="subject" className="block text-sm font-medium text-portfolio-gray-700 mb-2">
                   Subject
                 </label>
-                <Input
-                  id="subject"
-                  name="subject"
-                  type="text"
-                  required
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  placeholder="Project Inquiry"
-                  className="w-full"
-                />
+                <Input id="subject" name="subject" type="text" required value={formData.subject} onChange={handleInputChange} placeholder="Project Inquiry" />
               </div>
-
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-portfolio-gray-700 mb-2">
                   Message
                 </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  required
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  placeholder="Tell me about your project..."
-                  rows={5}
-                  className="w-full"
-                />
+                <Textarea id="message" name="message" required value={formData.message} onChange={handleInputChange} placeholder="Tell me about your project..." rows={5} />
               </div>
-
               <Button type="submit" className="btn-portfolio-primary w-full">
                 <Send className="w-4 h-4 mr-2" />
                 Send Message
