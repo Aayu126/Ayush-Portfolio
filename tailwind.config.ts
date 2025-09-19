@@ -80,7 +80,6 @@ export default {
         'portfolio-lg': 'var(--shadow-lg)',
         'portfolio-xl': 'var(--shadow-xl)',
         'orange': 'var(--shadow-orange)',
-        'glow': 'var(--shadow-glow)',
       },
       borderRadius: {
         lg: "var(--radius)",

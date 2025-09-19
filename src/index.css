@@ -50,9 +50,6 @@
     --gradient-hero: linear-gradient(135deg, hsl(var(--portfolio-orange)) 0%, hsl(var(--portfolio-orange-light)) 100%);
     --gradient-card: linear-gradient(145deg, hsl(var(--portfolio-gray-50)) 0%, hsl(var(--portfolio-gray-100)) 100%);
     --gradient-accent: linear-gradient(120deg, hsl(var(--portfolio-blue)) 0%, hsl(var(--portfolio-purple)) 100%);
-    --gradient-hero-bg: linear-gradient(135deg, hsl(var(--portfolio-gray-50)) 0%, hsl(var(--background)) 40%, hsl(var(--portfolio-orange) / 0.05) 100%);
-    --gradient-text-primary: linear-gradient(135deg, hsl(var(--portfolio-orange)) 0%, hsl(var(--portfolio-blue)) 100%);
-    --gradient-text-secondary: linear-gradient(90deg, hsl(var(--portfolio-gray-800)) 0%, hsl(var(--portfolio-gray-900)) 100%);
 
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 hsl(var(--portfolio-gray-900) / 0.05);
@@ -60,8 +57,6 @@
     --shadow-lg: 0 10px 15px -3px hsl(var(--portfolio-gray-900) / 0.1);
     --shadow-xl: 0 20px 25px -5px hsl(var(--portfolio-gray-900) / 0.1);
     --shadow-orange: 0 10px 30px -10px hsl(var(--portfolio-orange) / 0.3);
-    --shadow-glow: 0 0 50px hsl(var(--portfolio-orange) / 0.15);
-    --shadow-inner: inset 0 2px 4px 0 hsl(var(--portfolio-gray-900) / 0.06);
 
     --radius: 0.75rem;
 
@@ -134,19 +129,11 @@
 @layer components {
   /* Portfolio Button Variants */
   .btn-portfolio-primary {
-    @apply bg-gradient-to-r from-portfolio-orange to-portfolio-orange-light text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-orange transition-all duration-300 hover:scale-105 hover:-translate-y-1;
+    @apply bg-gradient-to-r from-portfolio-orange to-portfolio-orange-light text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-orange transition-all duration-300 hover:scale-105;
   }
 
   .btn-portfolio-secondary {
-    @apply border-2 border-portfolio-orange text-portfolio-orange px-8 py-4 rounded-2xl font-semibold hover:bg-portfolio-orange hover:text-white transition-all duration-300 hover:scale-105 hover:-translate-y-1 backdrop-blur-sm bg-white/80;
-  }
-
-  .btn-hero-primary {
-    @apply bg-gradient-to-r from-portfolio-orange via-portfolio-orange-light to-portfolio-orange text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-xl hover:shadow-glow transition-all duration-500 hover:scale-110 hover:-translate-y-2 relative overflow-hidden;
-  }
-
-  .btn-hero-secondary {
-    @apply border-2 border-portfolio-orange/30 text-portfolio-gray-800 px-10 py-5 rounded-2xl font-bold text-lg hover:border-portfolio-orange hover:text-portfolio-orange transition-all duration-300 hover:scale-105 hover:-translate-y-1 backdrop-blur-md bg-white/70 shadow-lg hover:shadow-xl;
+    @apply border-2 border-portfolio-orange text-portfolio-orange px-6 py-3 rounded-xl font-semibold hover:bg-portfolio-orange hover:text-white transition-all duration-300;
   }
 
   /* Card Components */
@@ -163,38 +150,17 @@
     @apply bg-gradient-to-r from-portfolio-orange to-portfolio-blue bg-clip-text text-transparent;
   }
 
-  .text-hero-gradient {
-    @apply bg-gradient-to-r from-portfolio-orange via-portfolio-orange-light to-portfolio-blue bg-clip-text text-transparent;
-  }
-
   .section-padding {
     @apply py-20 px-4 sm:px-6 lg:px-8;
   }
 
-  /* Modern UI Elements */
-  .glass-card {
-    @apply backdrop-blur-md bg-white/30 border border-white/20 rounded-3xl shadow-xl;
-  }
-
-  .floating-element {
-    @apply animate-[float_6s_ease-in-out_infinite];
-  }
-
-  .pulse-slow {
-    @apply animate-[pulse_3s_ease-in-out_infinite];
-  }
-
   /* Animation Classes */
   .fade-in {
-    @apply opacity-0 animate-[fadeIn_0.8s_ease-out_forwards];
+    @apply opacity-0 animate-[fadeIn_0.6s_ease-out_forwards];
   }
 
   .slide-up {
-    @apply translate-y-8 opacity-0 animate-[slideUp_0.8s_ease-out_forwards];
-  }
-
-  .scale-in {
-    @apply scale-95 opacity-0 animate-[scaleIn_0.6s_ease-out_forwards];
+    @apply translate-y-8 opacity-0 animate-[slideUp_0.6s_ease-out_forwards];
   }
 }
 
@@ -208,21 +174,5 @@
   to {
     transform: translateY(0);
     opacity: 1;
-  }
-}
-
-@keyframes scaleIn {
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
   }
 }
