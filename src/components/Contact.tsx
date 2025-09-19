@@ -39,6 +39,18 @@ const Contact = () => {
         "0KRDSk52U2FQW56QX" // Public Key
       );
 
+      // send confirmation email to user
+        await emailjs.send(
+         "service_6xnulet",
+        "template_confirmation", // new confirmation template
+       {
+         from_name: formData.name,
+         from_email: formData.email,
+        subject: formData.subject,
+      },
+  "0KRDSk52U2FQW56QX"
+);
+
       toast({
         title: "Message Sent!",
         description: "Thank you for reaching out. I'll get back to you soon.",
