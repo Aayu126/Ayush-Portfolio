@@ -41,8 +41,8 @@ const Contact = () => {
 
       // send confirmation email to user
         await emailjs.send(
-         "service_6xnulet",
-        "template_confirmation", // new confirmation template
+        "service_j69ytax", // Service ID
+        "template_i8t299k", // new confirmation template
        {
          from_name: formData.name,
          from_email: formData.email,
