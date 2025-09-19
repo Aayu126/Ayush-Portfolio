@@ -28,8 +28,8 @@ const Contact = () => {
 
     try {
       await emailjs.send(
-        "service_6xnulet", // Service ID
-        "template_mvp308s", // Template ID
+        "service_j69ytax", // Service ID
+        "template_2pc1gkb", // Template ID
         {
           from_name: formData.name,
           from_email: formData.email,
