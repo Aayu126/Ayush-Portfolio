@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Modern Portfolio Design System for Ayush Vijay Chavan */
 
 @layer base {
   :root {
@@ -36,7 +34,31 @@ All colors MUST be HSL.
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 0.5rem;
+    /* Portfolio-specific design tokens */
+    --portfolio-orange: 17 100% 58%;
+    --portfolio-orange-light: 17 100% 65%;
+    --portfolio-orange-dark: 17 85% 45%;
+    --portfolio-blue: 217 91% 60%;
+    --portfolio-purple: 262 83% 58%;
+    --portfolio-gray-50: 210 40% 98%;
+    --portfolio-gray-100: 210 40% 96%;
+    --portfolio-gray-200: 214 32% 91%;
+    --portfolio-gray-800: 217 33% 17%;
+    --portfolio-gray-900: 222 84% 5%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--portfolio-orange)) 0%, hsl(var(--portfolio-orange-light)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--portfolio-gray-50)) 0%, hsl(var(--portfolio-gray-100)) 100%);
+    --gradient-accent: linear-gradient(120deg, hsl(var(--portfolio-blue)) 0%, hsl(var(--portfolio-purple)) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(var(--portfolio-gray-900) / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(var(--portfolio-gray-900) / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(var(--portfolio-gray-900) / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(var(--portfolio-gray-900) / 0.1);
+    --shadow-orange: 0 10px 30px -10px hsl(var(--portfolio-orange) / 0.3);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +122,57 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans scroll-smooth;
+  }
+}
+
+@layer components {
+  /* Portfolio Button Variants */
+  .btn-portfolio-primary {
+    @apply bg-gradient-to-r from-portfolio-orange to-portfolio-orange-light text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-orange transition-all duration-300 hover:scale-105;
+  }
+
+  .btn-portfolio-secondary {
+    @apply border-2 border-portfolio-orange text-portfolio-orange px-6 py-3 rounded-xl font-semibold hover:bg-portfolio-orange hover:text-white transition-all duration-300;
+  }
+
+  /* Card Components */
+  .card-portfolio {
+    @apply bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1;
+  }
+
+  .card-skill {
+    @apply bg-gradient-to-br from-portfolio-gray-50 to-portfolio-gray-100 rounded-xl p-4 text-center hover:shadow-md transition-all duration-300;
+  }
+
+  /* Text Utilities */
+  .text-gradient {
+    @apply bg-gradient-to-r from-portfolio-orange to-portfolio-blue bg-clip-text text-transparent;
+  }
+
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Animation Classes */
+  .fade-in {
+    @apply opacity-0 animate-[fadeIn_0.6s_ease-out_forwards];
+  }
+
+  .slide-up {
+    @apply translate-y-8 opacity-0 animate-[slideUp_0.6s_ease-out_forwards];
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
