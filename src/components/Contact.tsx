@@ -27,6 +27,7 @@ const Contact = () => {
     e.preventDefault();
 
     try {
+      // Send the main email to yourself
       await emailjs.send(
         "service_j69ytax", // Service ID
         "template_2pc1gkb", // Template ID
@@ -39,9 +40,22 @@ const Contact = () => {
         "N0hG87ChMdd4_D1ol" // Public Key
       );
 
+      // Send auto-reply email to the user
+      await emailjs.send(
+        "service_j69ytax", // Same Service ID
+        "template_i8t299k", // Auto-reply Template ID (you need to create this in EmailJS dashboard)
+        {
+          to_name: formData.name,
+          to_email: formData.email,
+          reply_subject: `Thank you for contacting me, ${formData.name}!`,
+          reply_message: `Hi ${formData.name},\n\nThank you for reaching out to me through my portfolio website. I have received your message regarding "${formData.subject}" and will get back to you as soon as possible, usually within 24-48 hours.\n\nIn the meantime, feel free to check out my other projects on my portfolio or connect with me on LinkedIn.\n\nBest regards,\nAyush Chavan\nayushchavan1980@gmail.com`,
+        },
+        "N0hG87ChMdd4_D1ol" // Same Public Key
+      );
+
       toast({
         title: "Message Sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        description: "Thank you for reaching out. I'll get back to you soon. Please check your email for confirmation.",
       });
 
       // Reset form
@@ -51,7 +65,7 @@ const Contact = () => {
       console.error("EmailJS error:", error);
       toast({
         title: "Error",
-        description: "Something went wrong while sending your message.",
+        description: "Something went wrong while sending your message. Please try again.",
         variant: "destructive",
       });
     }
