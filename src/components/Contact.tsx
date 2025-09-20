@@ -40,22 +40,28 @@ const Contact = () => {
         "N0hG87ChMdd4_D1ol" // Public Key
       );
 
-      // Send auto-reply email to the user
-      await emailjs.send(
-        "service_j69ytax", // Same Service ID
-        "template_i8t299k", // uto-reply Template ID (you need to create this in EmailJS dashboard)
-        {
-          to_name: formData.name,
-          to_email: formData.email,
-          reply_subject: `Thank you for contacting me, ${formData.name}!`,
-          reply_message: `Hi ${formData.name},\n\nThank you for reaching out to me through my portfolio website. I have received your message regarding "${formData.subject}" and will get back to you as soon as possible, usually within 24-48 hours.\n\nIn the meantime, feel free to check out my other projects on my portfolio or connect with me on LinkedIn.\n\nBest regards,\nAyush Chavan\nayushchavan1980@gmail.com`,
-        },
-        "N0hG87ChMdd4_D1ol" // Same Public Key
-      );
-
+      // TODO: Enable auto-reply after creating template in EmailJS dashboard
+      // Uncomment the code below after creating 'template_auto_reply' in EmailJS
+     
+      try {
+        await emailjs.send(
+          "service_j69ytax",
+          "template_auto_reply",
+          {
+            to_name: formData.name,
+            to_email: formData.email,
+            reply_subject: `Thank you for contacting me, ${formData.name}!`,
+          },
+          "N0hG87ChMdd4_D1ol"
+        );
+        console.log("Auto-reply sent successfully");
+      } catch (autoReplyError) {
+        console.log("Auto-reply failed:", autoReplyError);
+      }
+    
       toast({
         title: "Message Sent!",
-        description: "Thank you for reaching out. I'll get back to you soon. Please check your email for confirmation.",
+        description: "Thank you for reaching out. I'll get back to you soon.",
       });
 
       // Reset form
