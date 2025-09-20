@@ -48,7 +48,7 @@ const About = () => {
                 <div>
                   <h4 className="font-semibold text-portfolio-gray-900 mb-1">Education</h4>
                   <p className="text-portfolio-gray-600">B.Tech CSE (AI & ML)</p>
-                  <p className="text-sm text-portfolio-gray-500">Sandip University, Mumbai</p>
+                  <p className="text-sm text-portfolio-gray-500">Sandip University, Nashik</p>
                 </div>
               </div>
             </Card>
