@@ -101,14 +101,14 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-portfolio-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-300 flex items-center justify-center space-x-1">
-            <span>© {currentYear} Ayush Vijay Chavan. Made with</span>
+            <span>© {currentYear} Ayush Vijay Chavan.</span>
             <Heart className="w-4 h-4 text-portfolio-orange fill-current" />
-            <span>and lots of Love</span>
+            <span>❤️</span>
           </p>
         </div>
       </div>
     </footer>
-  );
+  )
 };
 
 export default Footer;
