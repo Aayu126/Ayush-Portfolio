@@ -30,7 +30,7 @@ const Contact = () => {
       // Send the main email to yourself
       await emailjs.send(
         "service_j69ytax", // Service ID
-        "template_2pc1gkb", // Template ID
+        "template_pmux8f2", // Template ID
         {
           from_name: formData.name,
           from_email: formData.email,
@@ -46,7 +46,7 @@ const Contact = () => {
       try {
         await emailjs.send(
           "service_j69ytax",
-          "template_auto_reply",
+          "template_3q8iu1j",
           {
             to_name: formData.name,
             to_email: formData.email,
