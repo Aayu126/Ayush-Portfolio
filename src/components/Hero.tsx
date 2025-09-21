@@ -38,7 +38,7 @@ const Hero = () => {
             </h1>
             
             <h2 className="text-xl sm:text-2xl text-portfolio-gray-800 mb-6 font-medium">
-              Frontend Developer & UI/UX Designer
+              Frontend Developer & UI Designer
             </h2>
             
             <p className="text-lg text-portfolio-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
